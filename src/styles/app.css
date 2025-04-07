@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.w-md-editor {
+    @apply !bg-gray-100 dark:!bg-gray-900 
+           border border-gray-300 dark:border-gray-700 
+           rounded-xl shadow-md p-4 
+           transition-all duration-300 
+           hover:shadow-lg hover:border-gray-400 dark:hover:border-gray-600;
+}
+
+.wmde-markdown {
+    @apply !bg-transparent text-gray-900 dark:text-gray-100 
+           leading-relaxed font-medium;
+}
+
+.w-md-editor-text {
+    @apply !h-52 p-3 border border-gray-300 dark:border-gray-700 
+           rounded-lg bg-white dark:bg-gray-800 
+           text-gray-900 dark:text-gray-100 
+           focus:outline-none focus:ring-2 focus:ring-blue-400 
+           transition-all duration-200;
+}

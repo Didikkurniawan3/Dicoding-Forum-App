@@ -1,0 +1,143 @@
+/**
+ *  Test Scenario
+ * 
+ * ~ authThunks.asyncLogout
+    * - should dispatch action correctly when success logout
+ * ~ authThunks.asyncLogin 
+    * - should dispatch action correctly when success login
+    * - should dispatch action correctly when login failed
+ * ~ authThunks.asyncRegister
+    * - should dispatch action correctly when success register
+    * - should dispatch action correctly when register failed
+*/
+
+import { hideLoading, showLoading } from 'react-redux-loading-bar'
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+import { authAPI } from '../../api/auth'
+import { usersAPI } from '../../api/users'
+import { generateUser } from '../../utils/testUtils'
+import { authAction, authThunks } from './action'
+
+global.localStorage = {
+  removeItem: vi.fn(),
+  setItem: vi.fn(),
+}
+
+const fakeLoginResponseSuccess = {
+  status: "success",
+  message: "ok",
+  token: "token_dummy"
+}
+
+const fakeLoginResponseFailed = {
+  status: "failed",
+  message: "Ups, something went wrong",
+  token: ""
+}
+
+const fakeMeResponseSuccess = {
+  status: "success",
+  message: "ok",
+  user: generateUser()
+}
+
+const fakeRegisterResponseSuccess = {
+  status: "success",
+  message: "User created",
+  user: generateUser()
+}
+
+const fakeRegisterResponseFailed = {
+  status: "failed",
+  message: "Ups, something went wrong",
+  user: {}
+}
+
+describe("authThunks.asyncLogout", () => {
+  it("should dispatch action correctly when success logout", async () => {
+    const dispatch = vi.fn()
+    await authThunks.asyncLogout()(dispatch)
+    expect(dispatch).toHaveBeenCalledWith(authAction.unset())
+  })
+})
+
+describe("authThunks.asyncLogin", () => {
+  beforeEach(() => {
+    authAPI._login = authAPI.login
+    usersAPI._me = usersAPI.me
+  })
+
+  afterEach(() => {
+    authAPI.login = authAPI._login
+    usersAPI.me = usersAPI._me
+    delete authAPI._login
+    delete usersAPI._me
+  })
+
+  it("should dispatch action correctly when success login", async () => {
+    authAPI.login = () => Promise.resolve(fakeLoginResponseSuccess)
+    usersAPI.me = () => Promise.resolve(fakeMeResponseSuccess)
+    const dispatch = vi.fn()
+
+    await authThunks.asyncLogin({
+      email: "test@gmail.com",
+      password: "123"
+    })(dispatch)
+
+    expect(dispatch).toHaveBeenCalledWith(showLoading())
+    expect(dispatch).toHaveBeenCalledWith(authAction.set(fakeMeResponseSuccess.user))
+    expect(dispatch).toHaveBeenCalledWith(hideLoading())
+  })
+
+  it("should dispatch action correctly when login failed", async () => {
+    authAPI.login = () => Promise.resolve(fakeLoginResponseFailed)
+    const dispatch = vi.fn()
+
+    await expect(
+      authThunks.asyncLogin({ email: "fail@gmail.com", password: "123" })(dispatch)
+    ).rejects.toThrowError(fakeLoginResponseFailed.message)
+
+    expect(dispatch).toHaveBeenCalledWith(showLoading())
+    expect(dispatch).not.toHaveBeenCalledWith(authAction.set(fakeMeResponseSuccess.user))
+    expect(dispatch).toHaveBeenCalledWith(hideLoading())
+  })
+})
+
+describe("authThunks.asyncRegister", () => {
+  beforeEach(() => {
+    authAPI._register = authAPI.register
+  })
+
+  afterEach(() => {
+    authAPI.register = authAPI._register
+    delete authAPI._register
+  })
+
+  it("should dispatch action correctly when success register", async () => {
+    authAPI.register = () => Promise.resolve(fakeRegisterResponseSuccess)
+    const dispatch = vi.fn()
+
+    await authThunks.asyncRegister({
+      name: "test",
+      email: "test@gmail.com",
+      password: "123"
+    })(dispatch)
+
+    expect(dispatch).toHaveBeenCalledWith(showLoading())
+    expect(dispatch).toHaveBeenCalledWith(hideLoading())
+  })
+
+  it("should dispatch action correctly when register failed", async () => {
+    authAPI.register = () => Promise.resolve(fakeRegisterResponseFailed)
+    const dispatch = vi.fn()
+
+    await expect(
+      authThunks.asyncRegister({
+        name: "test", email: "fail@gmail.com", password: "123"
+      })(dispatch)
+    ).rejects.toThrowError(fakeRegisterResponseFailed.message)
+
+    expect(dispatch).toHaveBeenCalledWith(showLoading())
+    expect(dispatch).toHaveBeenCalledWith(hideLoading())
+  })
+})
