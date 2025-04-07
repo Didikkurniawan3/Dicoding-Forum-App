@@ -16,5 +16,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
         run: npm install --save-dev eslint-plugin-import eslint-plugin-n eslint-plugin-promise
+      - name: Lint
+        run: npm run lint
       - name: Tests
         run: npm run ci:test

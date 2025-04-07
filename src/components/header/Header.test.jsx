@@ -9,7 +9,7 @@
 
 import { cleanup, render, screen } from "@testing-library/react"
 import { useSelector } from "react-redux"
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter , useLocation } from "react-router-dom"
 import { afterEach, describe, expect, it, vi } from "vitest"
 
 import Header from "./Header"
@@ -26,8 +26,6 @@ vi.mock("react-router-dom", async () => {
         useLocation: vi.fn(),
     }
 })
-
-import { useLocation } from "react-router-dom"
 
 describe("Header Component", () => {
     afterEach(() => {

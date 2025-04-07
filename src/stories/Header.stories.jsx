@@ -1,8 +1,9 @@
+import "../styles/app.css"
+
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 import { createStore } from "redux"
 
-import "../styles/app.css"
 import Header from "../components/header/Header"
 import { generateUser } from "../utils/testUtils"
 
@@ -19,13 +20,17 @@ export default {
   component: Header,
 }
 
-const withProviders = (store) => (args) => (
-  <Provider store={store}>
-    <BrowserRouter>
-      <Header {...args} />
-    </BrowserRouter>
-  </Provider>
-)
+const withProviders = (store) => {
+  const Wrapped = (args) => (
+    <Provider store={store}>
+      <BrowserRouter>
+        <Header {...args} />
+      </BrowserRouter>
+    </Provider>
+  )
+  Wrapped.displayName = `withProviders(${store === storeLogin ? "storeLogin" : "storeNotLogin"})`
+  return Wrapped
+}
 
 export const Authenticated = withProviders(storeLogin).bind({})
 Authenticated.storyName = "User Logged In"
