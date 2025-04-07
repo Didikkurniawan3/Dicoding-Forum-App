@@ -1,8 +1,8 @@
-import "../styles/app.css"
 import { Provider } from "react-redux"
 import { BrowserRouter } from "react-router-dom"
 import { createStore } from "redux"
 
+import "../styles/app.css"
 import Header from "../components/header/Header"
 import { generateUser } from "../utils/testUtils"
 
