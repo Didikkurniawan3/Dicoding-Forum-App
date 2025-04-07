@@ -12,7 +12,7 @@ const Header = () => {
     <header className="navbar sticky min-h-20 top-0 backdrop-blur-sm bg-base-300/90 z-40">
       <nav className="container mx-auto">
         <div className="flex-1">
-          <Link to={"/"} className="text-3xl md:text-4xl">Dicoding Forum</Link>
+          <Link to={"/"} className="text-3xl md:text-4xl">Dicoding Forum p</Link>
         </div>
         {!isAuthPage && (
           <div className="flex items-center gap-2">
