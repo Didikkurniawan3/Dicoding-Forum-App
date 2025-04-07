@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from "react-redux-loading-bar";
+
 import { leaderboardAPI } from "../../api/leaderboard";
 
 export const leaderboardActionType = {

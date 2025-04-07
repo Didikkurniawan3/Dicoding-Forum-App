@@ -7,6 +7,7 @@
 */
 
 import { describe, expect, it } from "vitest"
+
 import { generateLeaderboard } from '../../utils/testUtils'
 import { leaderboardActionType } from './action'
 import { leaderboardReducer } from './reducer'

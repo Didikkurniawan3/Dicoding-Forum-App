@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useSelector } from 'react-redux'
+
 import useCategorySearch from '../../hooks/useCategorySearch'
 import CategorySkeleton from '../skeleton/CategorySkeleton'
 

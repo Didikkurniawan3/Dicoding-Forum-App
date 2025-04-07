@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
+
 import useInput from '../../hooks/useInput'
 
 const LoginInput = ({ login }) => {

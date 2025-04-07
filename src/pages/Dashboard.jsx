@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react"
 import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useSearchParams } from "react-router-dom"
+
 import CategoryList from "../components/category/CategoryList"
 import Search from "../components/search/Search"
 import NewThreadButton from "../components/thread/NewThreadButton"

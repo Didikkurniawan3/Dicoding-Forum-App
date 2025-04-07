@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+
 import { config } from '../../config'
 import { NewThreadShape } from "../../utils/shapes"
 import MarkdownEditor from "../markdownEditor/MarkdownEditor"

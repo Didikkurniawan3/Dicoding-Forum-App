@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 import toast from 'react-hot-toast'
+
 import NewThreadInput from '../input/NewThreadInput'
 
 const NewThreadModal = ({ onNewThread }) => {

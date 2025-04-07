@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+
 import { useVote } from '../../hooks/UseVote'
 import { threadThunks } from '../../states/thread/action'
 import { CommentShape } from '../../utils/shapes'

@@ -8,6 +8,7 @@
 
 import { hideLoading, showLoading } from 'react-redux-loading-bar'
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+
 import { usersAPI } from '../../api/users'
 import { generateUser } from '../../utils/testUtils'
 import { usersActions, usersThunks } from './action'

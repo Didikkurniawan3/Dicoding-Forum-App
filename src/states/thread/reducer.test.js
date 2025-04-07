@@ -16,6 +16,7 @@
 
 import { faker } from "@faker-js/faker"
 import { describe, expect, it } from "vitest"
+
 import { generateComment, generateThread } from "../../utils/testUtils"
 import { ThreadActionType } from "./action"
 import { threadReducer } from "./reducer"

@@ -1,4 +1,5 @@
 import { hideLoading, showLoading } from 'react-redux-loading-bar'
+
 import { usersAPI } from '../../api/users'
 
 export const UsersActionType = {

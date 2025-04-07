@@ -1,4 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
+
 import { Fallback } from '../components/fallback/Fallback'
 import { AppLayout } from '../components/layouts/AppLayout'
 import { AuthLayout } from '../components/layouts/AuthLayout'

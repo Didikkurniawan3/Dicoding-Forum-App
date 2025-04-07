@@ -8,6 +8,7 @@
 */
 
 import { describe, expect, it } from "vitest"
+
 import { generateUser } from '../../utils/testUtils'
 import { AuthActionType } from "./action"
 import authReducer from "./reducer"

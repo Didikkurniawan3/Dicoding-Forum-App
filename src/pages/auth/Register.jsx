@@ -1,6 +1,7 @@
 import toast from "react-hot-toast"
 import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
+
 import RegisterInput from "../../components/input/RegisterInput"
 import { authThunks } from "../../states/auth/action"
 

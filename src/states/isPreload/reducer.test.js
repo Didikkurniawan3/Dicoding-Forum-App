@@ -7,6 +7,7 @@
 */
 
 import { describe, expect, it } from "vitest"
+
 import { IsPreloadActionType } from "./action"
 import { isPreloadReducer } from "./reducer"
 

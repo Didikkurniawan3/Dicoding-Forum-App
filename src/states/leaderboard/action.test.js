@@ -8,6 +8,7 @@
 
 import { hideLoading, showLoading } from 'react-redux-loading-bar'
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest"
+
 import { leaderboardAPI } from '../../api/leaderboard'
 import { generateLeaderboard } from '../../utils/testUtils'
 import { leaderboardActions, leaderboardThunks } from './action'

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import toast from "react-hot-toast"
 import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+
 import CommentAdd from "../components/comment/CommentAdd"
 import CommentList from "../components/comment/CommentList"
 import ThereadItemSkeleton from "../components/skeleton/ThreadItemSkeleton"

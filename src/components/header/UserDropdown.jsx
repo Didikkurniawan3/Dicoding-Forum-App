@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux'
+
 import { authThunks } from '../../states/auth/action'
 import { UserShape } from '../../utils/shapes'
 

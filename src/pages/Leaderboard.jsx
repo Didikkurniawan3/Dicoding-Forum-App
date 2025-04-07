@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+
 import LeaderboardList from "../components/leaderboard/LeaderboardList"
 import { leaderboardThunks } from "../states/leaderboard/action"
 

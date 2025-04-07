@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+
 import { LeaderboardShape } from '../../utils/shapes'
 import LeaderboardSkeleton from '../skeleton/LeaderboardSkeleton'
 

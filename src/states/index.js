@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit"
 import { loadingBarReducer } from "react-redux-loading-bar"
+
 import authReducer from "./auth/reducer"
 import { isPreloadReducer } from "./isPreload/reducer"
 import { leaderboardReducer } from "./leaderboard/reducer"
