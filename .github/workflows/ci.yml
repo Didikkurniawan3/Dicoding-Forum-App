@@ -5,22 +5,18 @@ on:
     branches:
       - main
 
-      jobs:
-        lint_and_testing:
-          runs-on: ubuntu-latest
-          strategy:
-            matrix:
-              node-version: [18.x]
-          steps:
-            - uses: actions/checkout@v2
-            - name: Use Node.js ${{ matrix.node-version }}
-              uses: actions/setup-node@v2
-              with:
-                node-version: ${{ matrix.node-version }}
-            - name: Install dependencies
-              run: npm install --legacy-peer-deps
-            - name: Lint
-              run: npm run lint
-            - name: Tests
-              run: npm run ci:test
-      
+jobs:
+  lint_and_testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+      - name: Lint
+        run: npm run lint
+      - name: Tests
+        run: npm run ci:test
